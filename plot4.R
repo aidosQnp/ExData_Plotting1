@@ -63,30 +63,30 @@ with(df, {
   
   #--------------
   plot(df$DateTime, df$Global_active_power, type = "l",
-       lwd = 2,
+       lwd = 1,
        ylab = "Global Active Power",
        xlab = "")
   
   #----------
   plot(df$DateTime, df$Voltage, type = "l",
-       lwd = 2,
+       lwd = 1,
        ylab = "Voltage",
        xlab = "datetime")
   
   #--------------
   with(df, plot(DateTime, Sub_metering_1, type = "l",
-                lwd = 2,
+                lwd = 1,
                 ylab = "Energy sub metering",
                 xlab = ""))
-  with(df, lines(DateTime, Sub_metering_2, col = "red"), lwd = 2)
-  with(df, lines(DateTime, Sub_metering_3, col = "blue"), lwd = 2)
+  with(df, lines(DateTime, Sub_metering_2, col = "red"), lwd = 1)
+  with(df, lines(DateTime, Sub_metering_3, col = "blue"), lwd = 1)
   legend("topright", lty = 1, lwd = 2, 
          col = c("black", "red", "blue"),
          legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
   
   #----------
   plot(df$DateTime, df$Global_reactive_power, type = "l",
-       lwd = 2,
+       lwd = 1,
        ylab = "Global_reactive_power",
        xlab = "datetime")
   
