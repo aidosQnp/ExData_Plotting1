@@ -6,7 +6,7 @@ url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_co
 dest <- getwd()
 dataFileName <- "household_power_consumption"
 destDownlFile <- paste0(dest, "/", dataFileName, ".zip")
-plotFile <- paste0(dest, "/", "plot1.png")
+plotFile <- paste0(dest, "/", "plot2.png")
 
 condi <- "^1/2/2007|^2/2/2007"
 
@@ -56,9 +56,14 @@ close(cn)
 df$DateTime <- strptime(paste(df$Date, df$Time), "%d/%m/%Y %H:%M:%S")
 
 
-# PLOTTING:
+#---Plot-2:
 
-with(df, hist(Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power"))
+plot(df$DateTime, df$Global_active_power, type = "l",
+     lwd = 2,
+     ylab = "Global Active Power (kilowatts)",
+     xlab = "")
+
+
 
 # Create Png file:
 dev.copy(png, plotFile, 

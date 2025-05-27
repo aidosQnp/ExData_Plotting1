@@ -6,7 +6,7 @@ url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_co
 dest <- getwd()
 dataFileName <- "household_power_consumption"
 destDownlFile <- paste0(dest, "/", dataFileName, ".zip")
-plotFile <- paste0(dest, "/", "plot1.png")
+plotFile <- paste0(dest, "/", "plot4.png")
 
 condi <- "^1/2/2007|^2/2/2007"
 
@@ -56,9 +56,42 @@ close(cn)
 df$DateTime <- strptime(paste(df$Date, df$Time), "%d/%m/%Y %H:%M:%S")
 
 
-# PLOTTING:
+#----Plot-4:
 
-with(df, hist(Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power"))
+par(mfrow = c(2,2))
+with(df, {
+  
+  #--------------
+  plot(df$DateTime, df$Global_active_power, type = "l",
+       lwd = 2,
+       ylab = "Global Active Power",
+       xlab = "")
+  
+  #----------
+  plot(df$DateTime, df$Voltage, type = "l",
+       lwd = 2,
+       ylab = "Voltage",
+       xlab = "datetime")
+  
+  #--------------
+  with(df, plot(DateTime, Sub_metering_1, type = "l",
+                lwd = 2,
+                ylab = "Energy sub metering",
+                xlab = ""))
+  with(df, lines(DateTime, Sub_metering_2, col = "red"), lwd = 2)
+  with(df, lines(DateTime, Sub_metering_3, col = "blue"), lwd = 2)
+  legend("topright", lty = 1, lwd = 2, 
+         col = c("black", "red", "blue"),
+         legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+  
+  #----------
+  plot(df$DateTime, df$Global_reactive_power, type = "l",
+       lwd = 2,
+       ylab = "Global_reactive_power",
+       xlab = "datetime")
+  
+  
+})
 
 # Create Png file:
 dev.copy(png, plotFile, 
