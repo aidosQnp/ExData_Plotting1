@@ -6,7 +6,7 @@ url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_co
 dest <- getwd()
 dataFileName <- "household_power_consumption"
 destDownlFile <- paste0(dest, "/", dataFileName, ".zip")
-plotFile <- paste0(dest, "/", "Plot2.png")
+plotFile <- paste0(dest, "/", "Plot1.png")
 
 condi <- "^1/2/2007|^2/2/2007"
 
